@@ -24,9 +24,9 @@
     "bugs": "https://github.com/mfranzke/plugin-node-patternlab-inline-remote-assets/issues",
     "license": "MIT",
     "engines": {
-        "node": ">=8.11"
+        "node": ">=14"
     },
-    "peerDependencies": {
-    	"patternlab-node": "2.12"
+    "devDependencies": {
+        "sync-fetch": "^0.4.2"
     }
 }
