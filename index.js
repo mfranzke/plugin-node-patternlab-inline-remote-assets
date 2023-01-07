@@ -49,7 +49,7 @@ const getCurrentTime = () => {
 const exitProcess = (msg) => {
     const {BgRed, FgBlack, Reset} = consoleColors;
 
-    console.error(`${BgRed}${FgBlack}%s${Reset}`, `[${getCurrentTime()}] Inline Assets: ✘ ${msg}`);
+    console.error(`${BgRed}${FgBlack}%s${Reset}`, `[${getCurrentTime()}] Inline assets: ✘ ${msg}`);
 
     process.exit(1);
 };
@@ -59,7 +59,7 @@ module.exports = (patternlab) => {
         exitProcess('Pattern Lab not provided to plugin-init');
     }
 
-    patternlab.engines.handlebars.engine.registerHelper('inline-asset', (file) => {
+    patternlab.engines.handlebars.engine.registerHelper('inline-remote-asset', (file) => {
         const {FgCyan, Reset} = consoleColors;
 
         let content = '';
