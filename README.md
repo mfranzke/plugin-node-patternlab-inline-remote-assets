@@ -1,4 +1,7 @@
-# Inline Assets Plugin for Pattern Lab Node
+# Inline remote assets plugin for Pattern Lab Node
+
+| :point_up:    | This is a fork from [plugin-node-patternlab-inline-assets](https://github.com/michaelworm/plugin-node-patternlab-inline-assets/) that is mainly meant to provide the functionality to inline _remote_ assets. |
+|---------------|:------------------------|
 
 [![npm](https://img.shields.io/npm/v/plugin-node-patternlab-inline-assets.svg?maxAge=86400)](https://www.npmjs.com/package/plugin-node-patternlab-inline-assets) 
 [![npm](https://img.shields.io/npm/dt/plugin-node-patternlab-inline-assets.svg?maxAge=86400)](https://www.npmjs.com/package/plugin-node-patternlab-inline-assets) 
