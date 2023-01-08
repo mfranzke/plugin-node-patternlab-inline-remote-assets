@@ -1,35 +1,35 @@
 {
-    "name": "plugin-node-patternlab-inline-remote-assets",
-    "version": "0.0.0",
-    "description": "Inline remote assets plugin for Pattern Lab Node",
-    "main": "index.js",
-    "author": {
-        "name": "Maximilian Franzke",
-        "url": "https://github.com/mfranzke"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mfranzke/plugin-node-patternlab-inline-remote-assets"
-    },
-    "keywords": [
-        "Pattern Lab",
-        "patternlab",
-        "handlebars",
-        "inline assets",
-        "inline",
-        "assets",
-        "svg",
-        "JavaScript"
-    ],
-    "bugs": "https://github.com/mfranzke/plugin-node-patternlab-inline-remote-assets/issues",
-    "license": "MIT",
-    "engines": {
-        "node": ">=14"
-    },
-    "dependencies": {
-        "dompurify": "^2.4.3",
-        "image-size": "^1.0.2",
-        "jsdom": "^21.0.0",
-        "sync-fetch": "^0.4.2"
-    }
+  "name": "plugin-node-patternlab-inline-remote-assets",
+  "version": "0.0.0",
+  "description": "Inline remote assets plugin for Pattern Lab Node",
+  "main": "index.js",
+  "author": {
+    "name": "Maximilian Franzke",
+    "url": "https://github.com/mfranzke"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mfranzke/plugin-node-patternlab-inline-remote-assets"
+  },
+  "keywords": [
+    "Pattern Lab",
+    "patternlab",
+    "handlebars",
+    "inline assets",
+    "inline",
+    "assets",
+    "svg",
+    "JavaScript"
+  ],
+  "bugs": "https://github.com/mfranzke/plugin-node-patternlab-inline-remote-assets/issues",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "dompurify": "^2.4.3",
+    "image-size": "^1.0.2",
+    "jsdom": "^21.0.0",
+    "sync-fetch": "^0.4.2"
+  }
 }
