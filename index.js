@@ -1,6 +1,24 @@
 'use strict';
 
-const fs = require('fs');
+const fs = require('node:fs');
+const sizeOf = require('image-size');
+// Handlebars helpers couldn't handle async, like e.g. the regular .fetch
+const fetch = require('sync-fetch');
+
+// Adapted this list from https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#common_image_file_types
+const assetsToTransformToImg = [
+    'image/apng',
+    'image/avif',
+    'image/gif',
+    'image/jpeg',
+    'image/png',
+    'image/svg+xml',
+    'image/svg+xml;charset=utf-8',
+    'image/webp',
+    'image/bmp',
+    'image/x-icon',
+    'image/tiff'
+];
 
 // https://stackoverflow.com/a/41407246/7167015
 const consoleColors = {
@@ -49,7 +67,7 @@ const getCurrentTime = () => {
 const exitProcess = (msg) => {
     const {BgRed, FgBlack, Reset} = consoleColors;
 
-    console.error(`${BgRed}${FgBlack}%s${Reset}`, `[${getCurrentTime()}] Inline assets: ✘ ${msg}`);
+    console.error(`${BgRed}${FgBlack}%s${Reset}`, `[${getCurrentTime()}] Inline asset: ✘ ${msg}`);
 
     process.exit(1);
 };
@@ -62,15 +80,37 @@ module.exports = (patternlab) => {
     patternlab.engines.handlebars.engine.registerHelper('inline-remote-asset', (file) => {
         const {FgCyan, Reset} = consoleColors;
 
-        let content = '';
-
         try {
-            console.info(`${FgCyan}%s${Reset}`, `→ Inlining asset "${file}" ...`);
-            content = fs.readFileSync(file);
-        } catch (e) {
-            exitProcess(`No such file "${file}". Did you misspell something?`);
-        }
+            const fileData = fetch(file);
+            const imageBuffer = Buffer.from( fileData.arrayBuffer() );
+            const contentType = fileData.headers.get('content-type');
 
-        return content;
+            // Differentiate in between images and all other formats
+            if (assetsToTransformToImg.indexOf(contentType) !== -1) {
+                // Retrieve the image metadata like e.g. width/height and type
+                const imageMeta = sizeOf( imageBuffer );
+
+                // For all image formats we're base64 encoding the images contents
+                const base64Encoded = imageBuffer.toString('base64');
+
+                console.info(`${FgCyan}%s${Reset}`, `→ Inlining image "${file}" by filetype ${imageMeta.type} ...`);
+                
+                // It's always important to declare width and height as well as an alt attribute (empty one for the moment)
+                return `<img src="data:${contentType};base64,${base64Encoded}" width="${imageMeta.width}" height="${imageMeta.height}" alt="">`;
+            } else {
+                // For other contents we're mainly outputting the contents and sanitizing them
+                const createDOMPurify = require('dompurify');
+                const { JSDOM } = require('jsdom');
+                const window = new JSDOM('').window;
+                const DOMPurify = createDOMPurify(window);
+
+                console.info(`${FgCyan}%s${Reset}`, `→ Inlining asset "${file}" by content-type ${contentType} ...`);
+
+                return DOMPurify.sanitize( imageBuffer.toString() );
+            }
+            
+        } catch (e) {
+            exitProcess(`Problems with retrieving image "${file}". Did you misspell something? Error: ${e}`);
+        }
     });
 };
