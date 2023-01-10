@@ -63,7 +63,7 @@ Regarding the image formats that are determined by `content-type` header which w
     }
   }
 }
-
+```
 
 ## Usage
 
