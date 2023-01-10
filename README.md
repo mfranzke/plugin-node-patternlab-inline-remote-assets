@@ -39,11 +39,11 @@ Elsewhere please add the `plugin-node-patternlab-inline-remote-assets` entry man
 
 ## Usage
 
-Use three curly brackets to tell handlebars to stop escaping, then call the inline plugin and pass a path to your image.
+Use three curly brackets to tell handlebars to stop escaping, then call the inline plugin and pass a path to your asset.
 
     {{{inline-remote-asset 'https://img.shields.io/npm/v/plugin-node-patternlab-inline-remote-assets.svg'}}}
 
-The remote image will then be inlined into your template before compiling.
+The remote asset will then be inlined into your template before compiling.
 
 ### Differentiating in between images and other assets
 
