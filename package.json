@@ -33,6 +33,10 @@
     "sync-fetch": "^0.4.2"
   },
   "scripts": {
+    "test": "xo",
     "postinstall": "node ./postinstall.js"
+  },
+  "devDependencies": {
+    "xo": "^0.53.1"
   }
 }
