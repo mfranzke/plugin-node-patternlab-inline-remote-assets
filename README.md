@@ -39,15 +39,15 @@ Elsewhere please add the `plugin-node-patternlab-inline-remote-assets` entry man
 
 ## Usage
 
-Use three curly brackets to tell handlebars to stop escaping, then call the inline plugin and pass a path to your asset.
+Use three curly brackets to tell handlebars to stop escaping, then call the inline plugin and pass a path to your asset, as well as an alternative text (rendered as `alt`-attribute for images).
 
-    {{{inline-remote-asset 'https://img.shields.io/npm/v/plugin-node-patternlab-inline-remote-assets.svg'}}}
+    {{{inline-remote-asset 'https://img.shields.io/npm/v/plugin-node-patternlab-inline-remote-assets.svg' 'Alternative text'}}}
 
 The remote asset will then be inlined into your template before compiling.
 
 ### Differentiating in between images and other assets
 
-All images contents would get base64 encoded and inserted as `<img width=… height=… alt="">` tags. Other filetypes are getting outputted sanitized by [dompurify](https://www.npmjs.com/package/dompurify) directly.
+All images contents would get base64 encoded and inserted as `<img width=… height=… alt=…>` tags. Other filetypes are getting outputted sanitized by [dompurify](https://www.npmjs.com/package/dompurify) directly.
 
 ---
 

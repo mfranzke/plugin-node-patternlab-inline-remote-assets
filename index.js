@@ -81,7 +81,7 @@ module.exports = (patternlab) => {
 
 	patternlab.engines.handlebars.engine.registerHelper(
 		'inline-remote-asset',
-		(file) => {
+		(file, alternativeText) => {
 			const { FgCyan, Reset } = consoleColors;
 
 			try {
@@ -103,7 +103,11 @@ module.exports = (patternlab) => {
 					);
 
 					// It's always important to declare width and height as well as an alt attribute (empty one for the moment)
-					return `<img src="data:${contentType};base64,${base64Encoded}" width="${imageMeta.width}" height="${imageMeta.height}" alt="">`;
+					return `<img src="data:${contentType};base64,${base64Encoded}" width="${
+						imageMeta.width
+					}" height="${
+						imageMeta.height
+					}" alt="${alternativeText.replaceAll(/"/g, '&quot;')}">`;
 				} else {
 					// For other contents we're mainly outputting the contents and sanitizing them
 					const createDOMPurify = require('dompurify');
