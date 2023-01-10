@@ -37,6 +37,22 @@ Post-installation, you will see the following in your `patternlab-config.json`:
 
 Elsewhere please add the `plugin-node-patternlab-inline-remote-assets` entry manually to the `plugins` entry.
 
+### Configuring `DOMPurify`
+
+We're using [`DOMPurify`](https://www.npmjs.com/package/dompurify) to sanitize externally retrieved contents that we're inlining to the our pages code. You might want to provide some [individual configuration](https://www.npmjs.com/package/dompurify#user-content-can-i-configure-dompurify) that you could do via the `DOMPurifyGeneralSettings` option:
+
+```json
+"plugins": {
+  "plugin-node-patternlab-inline-remote-assets": {
+    "enabled": true,
+    "initialized": false,
+    "options": {
+      "DOMPurifyGeneralSettings": {}
+    }
+  }
+}
+```
+
 ## Usage
 
 Use three curly brackets to tell handlebars to stop escaping, then call the inline plugin and pass a path to your image.
@@ -49,9 +65,12 @@ The remote image will then be inlined into your template before compiling.
 
 All images contents would get base64 encoded and inserted as `<img width=… height=… alt="">` tags. Other filetypes are getting outputted sanitized by [dompurify](https://www.npmjs.com/package/dompurify) directly.
 
-***
+---
 
 ## Thanks
 
 The inline remote assets plugin for [Pattern Lab Node](https://github.com/pattern-lab/patternlab-node) was created and is maintained by [Maximilian Franzke](https://github.com/mfranzke/). As mentioned above this is a fork from [plugin-node-patternlab-inline-assets](https://github.com/michaelworm/plugin-node-patternlab-inline-assets) that is mainly meant to provide the functionality to inline _remote_ assets.
+
+```
+
 ```
