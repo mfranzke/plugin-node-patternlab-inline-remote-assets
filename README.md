@@ -64,6 +64,7 @@ Regarding the image formats that are determined by `content-type` header which w
   }
 }
 
+
 ## Usage
 
 Use three curly brackets to tell handlebars to stop escaping, then call the inline plugin and pass a path to your image.
