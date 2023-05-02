@@ -29,7 +29,7 @@
   "dependencies": {
     "dompurify": "^2.4.3",
     "image-size": "^1.0.2",
-    "jsdom": "^21.0.0",
+    "jsdom": "^22.0.0",
     "sync-fetch": "^0.4.2"
   },
   "scripts": {
