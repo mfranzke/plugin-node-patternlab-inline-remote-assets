@@ -1,6 +1,6 @@
 {
   "name": "plugin-node-patternlab-inline-remote-assets",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Inline remote assets plugin for Pattern Lab Node",
   "main": "index.js",
   "author": {
