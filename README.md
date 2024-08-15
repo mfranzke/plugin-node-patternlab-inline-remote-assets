@@ -37,6 +37,34 @@ Post-installation, you will see the following in your `patternlab-config.json`:
 
 Elsewhere please add the `plugin-node-patternlab-inline-remote-assets` entry manually to the `plugins` entry.
 
+### Image formats to transform
+
+Regarding the image formats that are determined by `content-type` header which would get inserted as a base64 encoded URL within transformed within an `<img>` HTML tag you could overwrite the internal list that we're providing with this plugin by the `assetsToTransformToImg` option like e.g. (with the defaults included within this example):
+
+```json
+"plugins": {
+  "plugin-node-patternlab-inline-remote-assets": {
+    "enabled": true,
+    "initialized": false,
+    "options": {
+      "assetsToTransformToImg": [
+        "image/apng",
+        "image/avif",
+        "image/gif",
+        "image/jpeg",
+        "image/png",
+        "image/svg+xml",
+        "image/svg+xml;charset=utf-8",
+        "image/webp",
+        "image/bmp",
+        "image/x-icon",
+        "image/tiff"
+      ]
+    }
+  }
+}
+```
+
 ## Usage
 
 Use three curly brackets to tell handlebars to stop escaping, then call the inline plugin and pass a path to your asset, as well as an alternative text (rendered as `alt`-attribute for images).
